@@ -51,26 +51,33 @@ while (isEmpty||isNan);
 //Program 2 : Guess
 
 let guessNumber;
+let count=0;
 do{
     guessNumber=prompt('Enter your answer') || '';
     isEmpty = guessNumber.trim() === '';
     isNan = isNaN(guessNumber);
     outOfRange = Number(guessNumber)<1 || Number(guessNumber)>99;
+    count++;
     if(isEmpty||isNan){
-        alert('Invalid Number,Try 1-99')
+        alert(`Invalid Number,Try 1-99,Round${count}/10`)
     }
     else if (outOfRange){
-        alert('Invalid Range,Try 1-99');
+        alert(`Invalid Range,Try 1-99,Round${count}/10`);
     }
     else if (+guessNumber < +ansNumber){
-        alert('Too low');
+        alert(`Too low,Round${count}/10`);
     }
     else if (+guessNumber > +ansNumber){
-        alert('Too high');
+        alert(`Too high,Round${count}/10`);
     }
     else if (+guessNumber == +ansNumber){
         alert('Correct');
     }
+    if(count==10){
+        alert('You fail!!')
+        break;
+    }
+    
 }
 while( +guessNumber != +ansNumber);
 
